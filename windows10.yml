@@ -2,17 +2,20 @@ services:
   windows:
     image: dockurr/windows
     container_name: windows
+    network_mode: bridge
     environment:
       VERSION: "10"
-      USERNAME: ${WINDOWS_USERNAME}
-      PASSWORD: ${WINDOWS_PASSWORD}
-      RAM_SIZE: "4G"
-      CPU_CORES: "2"
-      DISK_SIZE: "32G"
+      USERNAME: bidulgi
+      PASSWORD: jinn0929
+      RAM_SIZE: "8G"
+      CPU_CORES: "4"
+      DISK_SIZE: "64G"
     cap_add:
       - NET_ADMIN
     ports:
       - "8006:8006"
+      - "3389:3389/tcp"
+      - "3389:3389/udp"
     volumes:
       - ./windows-storage:/storage
       - ./win10x64.iso:/boot.iso
